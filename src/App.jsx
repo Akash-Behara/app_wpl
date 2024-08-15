@@ -5,7 +5,7 @@ import ProjectDetailsPage from "./pages/ProjectDetailsPage"
 function App() {
 
   return (
-    <div className="">
+    <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projectdetails" element={<ProjectDetailsPage />} />
