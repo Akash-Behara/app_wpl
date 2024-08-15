@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Gridular';
+    font-style: normal;
+    font-display: swap;
+    src: url(assets/font/Gridular-Regular.woff) format('woff');
+  }
+
+  @font-face {
+      font-family: 'Bienvenue';
+      font-style: normal;
+      font-display: swap;
+      src: url(assets/font/Bienvenu.ttf) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-display: swap;
+    src: url(assets/font/InterVariable.ttf) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-display: swap;
+    src: url(assets/font/Manrope-Regular.ttf) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Bevan';
+    font-style: normal;
+    font-display: swap;
+    src: url(assets/font/Bevan.ttf) format('woff');
+  }
+}
+
+html, body{
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  min-width: 100vw;
+}
