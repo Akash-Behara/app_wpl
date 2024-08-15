@@ -39,8 +39,13 @@
   }
 }
 
-html, body{
-  scroll-behavior: smooth;
+body{
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
-  min-width: 100vw;
+  background-image: url('assets/images/bg.png');
+  background-size: 100% 100%;
+  background-position: top bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
