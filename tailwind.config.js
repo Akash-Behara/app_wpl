@@ -30,7 +30,28 @@ export default {
         cardRedBg: "#F03D3D1A",
         cardYellowText: "#FCBF04",
         cardYellowBg: "#FCBF041A",
-        cardOnlyDustBg: "#010116B2"
+        cardOnlyDustBg: "#010116B2",
+        white32: "#FFFFFF52",
+        white88: "#FFFFFFE0",
+        white48: "#FFFFFF7A",
+        white7: "#FFFFFF12",
+        white64: "#FFFFFFA3",
+        white4: "#FFFFFF0A",
+        white12: "#FFFFFF1F"
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
