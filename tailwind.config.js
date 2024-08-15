@@ -37,7 +37,8 @@ export default {
         white7: "#FFFFFF12",
         white64: "#FFFFFFA3",
         white4: "#FFFFFF0A",
-        white12: "#FFFFFF1F"
+        white12: "#FFFFFF1F",
+        black7: "#00000012"
       },
       keyframes: {
         "accordion-down": {
