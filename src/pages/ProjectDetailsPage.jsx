@@ -83,7 +83,10 @@ const ProjectDetailsPage = () => {
               <Clock size={14} className='text-white32'/>
               <p className='text-[14px] text-white32 leading-[20px] font-inter'>Project Deadline in <span className='text-white88 ml-1'>02d 16h 24m</span></p>
             </div>
-            <div className='h-[1px] w-[60%] bg-primaryYellow'/>
+            <div className='h-[1px] w-full'>
+              <div className='h-[1px] w-[40%] bg-primaryYellow'/>
+              <div className='h-[1px] translate-y-[-1px] w-full bg-white7'/>
+            </div>
             <div className='flex flex-col justify-center items-center mt-8'>
               <p className='text-[14px] text-white32 leading-4 font-inter'>Total Prizes</p>
               <p className='text-[24px] text-white88 leading-[28px] font-gridular flex items-center gap-2'>
