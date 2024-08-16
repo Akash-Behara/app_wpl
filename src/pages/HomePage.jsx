@@ -8,6 +8,7 @@ import BugFixCard from '../components/home/BugFixCard'
 import RecentActivityCard from '../components/home/RecentActivityCard'
 
 const HomePage = () => {
+
   return (
     <div className='flex flex-row justify-between pl-4 mt-4'>
       {/* Left side */}
