@@ -1,7 +1,15 @@
 import { ArrowLeft, Plus, Upload } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
+import CustomModal from '../components/ui/CustomModal'
 
 const EditProfilePage = () => {
+
+    const [showAddProjectModal, setShowAddProjectModal] = useState(false)
+
+    const handleCloseAddProjectModal = () => {
+        setShowAddProjectModal(false)
+    }
+
   return (
     <div className='flex flex-col justify-center items-center'>
         <div className='w-full text-left text-white32 text-[13px] font-medium border-t border-b border-white7 flex items-center gap-1 py-2 px-20 mt-[1px]'><ArrowLeft size={14} className='text-white32'/> Back to your Profile</div>
@@ -79,19 +87,24 @@ const EditProfilePage = () => {
 
                 <div className='h-[1px] w-full bg-white7 my-6'/>
 
-
                 <div className=''>
                     <p className="text-[14px] font-inter text-white88">Add a Project</p>
                     <div className='mt-4'>
                         <p className='text-[#FAF1B1E0] font-gridular leading-5'>Add something you’re proud of!</p>
                         <p className='text-[12px] text-white32 font-medium font-inter'>Adding PoW increases your chances of landing the gig!</p>
                     </div>
-                    <div className='bg-white7 text-white88 rounded-[6px] h-[42px] flex justify-center items-center mt-4'>
+                    <button onClick={() => {console.log('modal'); setShowAddProjectModal(true)}} className='bg-white7 text-white88 rounded-[6px] h-[42px] flex justify-center items-center mt-4 w-full'>
                         <p className='flex items-center gap-1 text-[12px] font-medium font-inter'>Add a Project <Plus size={16} className='text-white32'/></p>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>
+
+        {showAddProjectModal &&  
+            <CustomModal isOpen={showAddProjectModal} closeModal={handleCloseAddProjectModal}>
+                <div>HI I AM MODAL</div>
+            </CustomModal>
+        }
     </div>
   )
 }
