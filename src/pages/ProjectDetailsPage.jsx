@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion"
-import MilestoneCard from '../components/projectdetails/milestoneCard'
+import MilestoneCard from '../components/projectdetails/MilestoneCard'
 import { Clock } from 'lucide-react'
 import MilestoneStatusCard from '../components/projectdetails/MilestoneStatusCard'
 import USDCsvg from '../assets/svg/usdc.svg'
