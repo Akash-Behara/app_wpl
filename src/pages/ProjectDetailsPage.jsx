@@ -13,8 +13,6 @@ import { Clock } from 'lucide-react'
 import MilestoneStatusCard from '../components/projectdetails/MilestoneStatusCard'
 import USDCsvg from '../assets/svg/usdc.svg'
 
-
-
 const ProjectDetailsPage = () => {
   return (
     <div>
