@@ -45,7 +45,7 @@ body{
   min-height: 100vh;
   background-image: url('assets/images/bg.png');
   background-size: 100% 100%;
-  background-position: top bottom;
+  background-position: left 64px;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
