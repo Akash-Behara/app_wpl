@@ -150,11 +150,11 @@ const powdummy = [
   {img: dummyPng, 
     title: 'UX Design for WPL', 
     desc: 'Some one linear for my Project, coz it\'s asethetic', 
-    lang: ['Frontend', 'Javascript', 'Figma'],
+    skills: ['Frontend', 'Javascript', 'Figma'],
   },
   {img: dummyPng, 
     title: 'Frontend for WPL', 
     desc: 'Some one linear for my Project, coz it\'s asethetic', 
-    lang: ['Frontend', 'Javascript', 'Figma', 'React'],
+    skills: ['Frontend', 'Javascript', 'Figma', 'React'],
   },
 ]

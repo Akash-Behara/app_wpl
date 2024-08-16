@@ -1,21 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Modal from 'react-modal';
 
-const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-    // overlay: {
-    //     backgroundColor: `rgba(0, 0, 0, ${(pathname?.includes('tippingarena') && isIos) ? 0.9 : 0.5})`,
-    //     backdropFilter: `blur(${blurValue}px)`,
-    //     zIndex: 102
-    // },
-};
 
 const CustomModal = ({ isOpen, closeModal, children }) => {
     Modal.setAppElement('body');
@@ -26,11 +11,6 @@ const CustomModal = ({ isOpen, closeModal, children }) => {
             onRequestClose={closeModal}
             overlayClassName="custom-modal--overlay"
             style={{
-                overlay: {
-                    backgroundColor: `rgba(0, 0, 0, 0.5})`,
-                    backdropFilter: `blur(2px)`,
-                    zIndex: 102
-                },
                 content: {
                     top: '50%',
                     left: '50%',
@@ -38,6 +18,10 @@ const CustomModal = ({ isOpen, closeModal, children }) => {
                     bottom: 'auto',
                     marginRight: '-50%',
                     transform: 'translate(-50%, -50%)',
+                    padding: '0',
+                    border: 'none',
+                    borderRadius: '6px',
+                    background: 'transparent',
                 }
             }}
         >
