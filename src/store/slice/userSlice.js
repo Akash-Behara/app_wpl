@@ -7,7 +7,11 @@ const initialState = {
         email: 'wolf@giga.com',
         role: 'Giga Admin',
         createdAt: '3 days ago',
-        updatedAt: ''
+        updatedAt: '',
+        kyc: {
+            isVerified: false,
+            verifiedAt: '2 days ago'
+        }
     },
     isLoadingUser: false,
     error: null
