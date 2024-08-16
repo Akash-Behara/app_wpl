@@ -1,17 +1,16 @@
-import React from 'react'
 import headerPng from '../assets/images/prdetails_header.png'
 import wpl_prdetails from '../assets/images/wpl_prdetails.png'
 
+import { Clock, Zap } from 'lucide-react'
+import USDCsvg from '../assets/svg/usdc.svg'
+import MilestoneCard from '../components/projectdetails/MilestoneCard'
+import MilestoneStatusCard from '../components/projectdetails/MilestoneStatusCard'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion"
-import MilestoneCard from '../components/projectdetails/MilestoneCard'
-import { Clock, Zap } from 'lucide-react'
-import MilestoneStatusCard from '../components/projectdetails/MilestoneStatusCard'
-import USDCsvg from '../assets/svg/usdc.svg'
 
 
 

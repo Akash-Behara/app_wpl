@@ -13,7 +13,7 @@ const initialTabs = [
 const ExploreGigs = () => {
 
   const [tabs, setTabs] = useState(initialTabs)
-  const [selectedTab, setSelectedTab] = useState('quest')
+  const [selectedTab, setSelectedTab] = useState('opengigs')
 
   const handleTabClick = (id) => {
     const newTabs = tabs.map((tab) => ({
