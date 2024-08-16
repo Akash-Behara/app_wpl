@@ -12,8 +12,6 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion"
 
-
-
 const ProjectDetailsPage = () => {
   return (
     <div>
