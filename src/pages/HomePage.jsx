@@ -2,7 +2,6 @@ import React from 'react'
 import Statistics from '../components/home/Statistics'
 import SearchRoles from '../components/home/SearchRoles'
 import ExploreGigs from '../components/home/ExploreGigs'
-import { useSelector } from 'react-redux'
 
 const HomePage = () => {
 
