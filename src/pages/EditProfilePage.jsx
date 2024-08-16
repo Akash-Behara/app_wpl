@@ -135,6 +135,7 @@ const EditProfilePage = () => {
             link: '',
             imgPreview: null,
         })
+        setErrors({})
     }
 
   return (
@@ -286,6 +287,7 @@ const EditProfilePage = () => {
                             </>
                             }
                         </div>
+                        {errors.img && <div className="mt-[2px] error text-[#FF7373] text-[13px] font-inter">{errors.img}</div>}
 
                         <div className='mt-4'>
                             <p className='text-[14px] text-white88 font-inter'>Add details</p>
