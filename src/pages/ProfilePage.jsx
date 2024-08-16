@@ -12,6 +12,7 @@ import PoWCard from '../components/profile/PoWCard'
 import { ArrowUpRight, DiscIcon, Edit2, Mail, Send } from 'lucide-react'
 
 import dummyPng from '../assets/dummy/Container.png'
+import { Link } from 'react-router-dom'
 
 
 const ProfilePage = () => {
@@ -34,7 +35,7 @@ const ProfilePage = () => {
                 <p className='text-[14px] text-white88'>@akshit</p>
               </div>
               <div className='bg-white7 rounded-[6px] flex gap-1 items-center h-[32px] px-2 py-1'>
-                <p className='text-[12px] text-white48 font-medium font-inter'>Edit Profile</p>
+                <Link to={'/editprofile'}><p className='text-[12px] text-white48 font-medium font-inter'>Edit Profile</p></Link>
                 <Edit2 size={14} className='text-white32'/>
               </div>
             </div>
