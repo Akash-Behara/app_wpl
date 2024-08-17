@@ -10,9 +10,9 @@ import RecentActivityCard from '../components/home/RecentActivityCard'
 const HomePage = () => {
 
   return (
-    <div className='flex flex-row justify-between pl-4 mt-4'>
+    <div className='flex flex-row justify-between mt-4'>
       {/* Left side */}
-      <div className='flex flex-col px-12 mt-4'>
+      <div className='flex flex-col px-12 mt-4 w-full'>
         <Statistics />
         <SearchRoles />
         <ExploreGigs />
