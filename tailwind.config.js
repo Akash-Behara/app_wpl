@@ -39,7 +39,8 @@ export default {
         white64: "#FFFFFFA3",
         white4: "#FFFFFF0A",
         white12: "#FFFFFF1F",
-        black7: "#00000012"
+        black7: "#00000012",
+        errorMsgRedText: "#FF7373"
       },
       keyframes: {
         "accordion-down": {
