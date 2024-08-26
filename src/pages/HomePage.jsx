@@ -12,7 +12,7 @@ const HomePage = () => {
   return (
     <div className='flex flex-row justify-between pl-4 mt-4'>
       {/* Left side */}
-      <div className='flex flex-col px-12 mt-4'>
+      <div className='flex flex-col md:px-10 lg:px-[62px] mt-4'>
         <Statistics />
         <SearchRoles />
         <ExploreGigs />
