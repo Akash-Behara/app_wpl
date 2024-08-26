@@ -1,26 +1,25 @@
-import React from 'react'
 import headerPng from '../assets/images/prdetails_header.png'
 import wpl_prdetails from '../assets/images/wpl_prdetails.png'
 
+import { Clock, Zap } from 'lucide-react'
+import USDCsvg from '../assets/svg/usdc.svg'
+import MilestoneCard from '../components/projectdetails/MilestoneCard'
+import MilestoneStatusCard from '../components/projectdetails/MilestoneStatusCard'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion"
-import MilestoneCard from '../components/projectdetails/MilestoneCard'
-import { Clock, Zap } from 'lucide-react'
-import MilestoneStatusCard from '../components/projectdetails/MilestoneStatusCard'
-import USDCsvg from '../assets/svg/usdc.svg'
 
 const ProjectDetailsPage = () => {
   return (
-    <div>
+    <div className='relative'>
       <div>
         <img src={headerPng} alt='header' className='h-[200px] w-full'/>
       </div>
       <div className='flex justify-center gap-20 mx-44'>
-        <div>
+        <div className=''>
           <div className='translate-y-[-15px]'>
             <img src={wpl_prdetails} alt='wpl_prdetails' className='size-[72px]'/>
           </div>
@@ -60,7 +59,7 @@ const ProjectDetailsPage = () => {
           </div>
 
           <div>
-            <Accordion type="single" defaultValue="item-0" collapsible>
+            <Accordion type="multiple" defaultValue="item-0" collapsible>
               {dummyMilestones.map((milestone, index) => (
                 <AccordionItem value={`item-${index}`} key={index} className="border-white7">
                   <AccordionTrigger className="text-white48 font-inter hover:no-underline">{milestone?.milestoneNumber}</AccordionTrigger>
