@@ -2,9 +2,22 @@ import { ChevronDown, X } from 'lucide-react'
 import ethereumIcon from '../../assets/images/ethereum-icon.png'
 import { useState } from 'react';
 
+
+
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+  } from "../../components/ui/select"
+
 const SearchRoles = () => {
 
     const [roleName, setRoleName] = useState('');
+
 
   return (
     <div className="bg-[#050e52] w-full h-[97px] border border-white/10 rounded-lg mb-8">
@@ -22,10 +35,26 @@ const SearchRoles = () => {
                 />
                 <X className='text-white48 w-6 cursor-pointer' onClick={() => setRoleName('')} size={14}/>
             </div>
-            <div className="w-full h-[32px] bg-cardBlueBg2 rounded-md p-2 flex flex-row justify-between">
-                <p className="text-white88 font-gridular text-[14px] leading-[16.8px]">Professional</p>
-                <ChevronDown className='text-white48' size={14}/>
-            </div>
+            {/* <div className="w-full h-[32px] bg-cardBlueBg2 rounded-md flex flex-row justify-between"> */}
+                <Select className="text-white">
+                    <SelectTrigger className="w-full text-white dark:bg-primaryBlue">
+                        <SelectValue className='text-white' placeholder="Select a fruit" />
+                    </SelectTrigger>
+                    <SelectContent className="">
+                        <SelectGroup className='text-white bg-red-500'>
+                            <SelectLabel className="text-white">Fruits</SelectLabel>
+                            <SelectItem value="apple">Apple</SelectItem>
+                            <SelectItem value="banana">Banana</SelectItem>
+                            <SelectItem value="blueberry">Blueberry</SelectItem>
+                            <SelectItem value="grapes">Grapes</SelectItem>
+                            <SelectItem value="pineapple">Pineapple</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+
+                {/* <p className="text-white88 font-gridular text-[14px] leading-[16.8px]">Professional</p> */}
+                {/* <ChevronDown className='text-white48' size={14}/> */}
+            {/* </div> */}
             <div className="w-full h-[32px] bg-cardBlueBg2 rounded-md p-2 flex flex-row justify-between">
                 <div className='flex flex-row'>
                     <img src={ethereumIcon} alt="Ethereum icon"/>
