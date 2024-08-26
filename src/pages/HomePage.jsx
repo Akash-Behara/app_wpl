@@ -1,11 +1,10 @@
-import React from 'react'
-import Statistics from '../components/home/Statistics'
-import SearchRoles from '../components/home/SearchRoles'
+import BugFixCard from '../components/home/BugFixCard'
 import ExploreGigs from '../components/home/ExploreGigs'
 import KYC_Card from '../components/home/KYC_Card'
 import ProfileDetailsCard from '../components/home/ProfileDetailsCard'
-import BugFixCard from '../components/home/BugFixCard'
 import RecentActivityCard from '../components/home/RecentActivityCard'
+import SearchRoles from '../components/home/SearchRoles'
+import Statistics from '../components/home/Statistics'
 
 const HomePage = () => {
 
