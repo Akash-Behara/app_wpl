@@ -88,7 +88,7 @@ const GithubSearchBox = ({ teamList }) => {
 					<p className='text-white32 font-medium text-[12px] leading-[14.4px]'>No Results</p>
 				</div>
       )}
-			<div className='flex gap-1'>
+			<div className='flex flex-wrap gap-1'>
         {selectedMembers.length > 0 && selectedMembers.map((member) => (
           <div 
 						key={member.githubId}
