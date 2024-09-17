@@ -23,7 +23,7 @@ const Navbar = () => {
         </div>
         <div className='flex items-center gap-2'>
           <img src={hourglass} alt='hourglass' className='w-[16px] h-[24px]'/>
-          <p>DACOITETH</p>
+          <p className='text-primaryYellow'>DACOITETH</p>
         </div>
       </div>
 

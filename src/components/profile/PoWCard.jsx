@@ -4,7 +4,7 @@ const PoWCard = ({ data }) => {
   return (
     <div className='flex gap-4 items-center mb-4'>
         <div>
-            <img src={data?.imgPreview || data?.img} alt='dummy' className='size-[50px] md:size-[90px] aspect-square'/>
+            <img src={data?.imgPreview || data?.img} alt='dummy' className='size-[50px] md:size-[90px] aspect-square rounded-lg'/>
         </div>
         <div>
             <p className='text-white font-inter'>{data?.title}</p>
@@ -18,7 +18,7 @@ const PoWCard = ({ data }) => {
                     </div>
                     : <div>
                         <p className='text-[13px] text-white32 font-medium font-inter mt-1'>{data?.desc}</p>
-                        <div className='flex items-center gap-1 flex-wrap'>
+                        <div className='flex items-center gap-1 flex-wrap mt-1'>
                             {data?.skills?.map((lang, idx) => <div key={idx} className='bg-white7 text-[#FFFFFF3D] text-[12px] font-medium rounded-md px-2 py-1'>{lang}</div>)}
                         </div>
                     </div>

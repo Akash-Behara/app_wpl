@@ -25,6 +25,7 @@ export default {
         cardBlueText: "#3EACDB",
         cardBlueBg: "#9CD4EC1A",
         cardBlueBg2: "#171F5E",
+        cardGithubBlueBg: '#091044',
         cardGreenText: "#0ED065",
         cardGreenBg: "#0ED0651A",
         cardRedText: "#F03D3D",
@@ -39,7 +40,8 @@ export default {
         white64: "#FFFFFFA3",
         white4: "#FFFFFF0A",
         white12: "#FFFFFF1F",
-        black7: "#00000012"
+        black7: "#00000012",
+        errorMsgRedText: "#FF7373"
       },
       keyframes: {
         "accordion-down": {

@@ -31,8 +31,8 @@ const ProfilePage = () => {
           <div>
             <div className='flex justify-between'>
               <div>
-                <p className='text-[24px] text-primaryYellow font-gridular'>Akshit Verma</p>
-                <p className='text-[14px] text-white88'>@akshit</p>
+                <p className='text-[24px] leading-[28px] text-primaryYellow font-gridular'>Akshit Verma</p>
+                <p className='text-[14px] text-white32 font-inter'>@akshit</p>
               </div>
               <div className='bg-white7 rounded-[6px] flex gap-1 items-center h-[32px] px-2 py-1'>
                 <Link to={'/editprofile'}><p className='text-[12px] text-white48 font-medium font-inter'>Edit Profile</p></Link>

@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCheck, Info, Plus, Search, Upload, X } from 'lucide-rea
 import React, { useRef, useState } from 'react'
 import CustomModal from '../components/ui/CustomModal'
 import PoWCard from '../components/profile/PoWCard'
+import { Link } from 'react-router-dom';
 
 const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/i;
 
@@ -140,7 +141,7 @@ const EditProfilePage = () => {
 
   return (
     <div className='flex flex-col justify-center items-center'>
-        <div className='w-full text-left text-white32 text-[13px] font-medium border-t border-b border-white7 flex items-center gap-1 py-2 px-20 mt-[1px]'><ArrowLeft size={14} className='text-white32'/> Back to your Profile</div>
+        <Link to={'/profile'} className='w-full text-left text-white32 text-[13px] font-medium border-t border-b border-white7 flex items-center gap-1 py-2 px-20 mt-[1px]'><ArrowLeft size={14} className='text-white32'/> Back to your Profile</Link>
         
         <div className='w-[340px] md:w-[480px] mt-2'>
             <div className='flex items-center gap-4'>
@@ -178,13 +179,13 @@ const EditProfilePage = () => {
                     <div className='flex justify-between gap-4'>
                         <div className='flex flex-col gap-1 w-full'>
                             <label className='text-[13px] font-medium text-white32'>Your Name</label>
-                            <input className='bg-white7 rounded-[6px] placeholder:text-white32 px-3 py-2 text-[14px]' 
+                            <input className='bg-white7 rounded-[6px] text-white placeholder:text-white32 px-3 py-2 text-[14px]' 
                                 placeholder='Jhon Doe'
                             />
                         </div>
                         <div className='flex flex-col gap-1 w-full'>
                             <label className='text-[13px] font-medium text-white32'>Your Email</label>
-                            <input className='bg-white7 rounded-[6px] placeholder:text-white32 px-3 py-2 text-[14px]' 
+                            <input className='bg-white7 rounded-[6px] text-white placeholder:text-white32 px-3 py-2 text-[14px]' 
                                 placeholder='Jhon@Doe.com'
                             />
                         </div>
@@ -192,7 +193,7 @@ const EditProfilePage = () => {
 
                     <div className='flex flex-col gap-1 w-full'>
                         <label className='text-[13px] font-medium text-white32'>Write your Bio (max 240 characters)</label>
-                        <textarea className='bg-white7 rounded-[6px] placeholder:text-white32 px-3 py-2 text-[14px]' 
+                        <textarea className='bg-white7 rounded-[6px] text-white placeholder:text-white32 px-3 py-2 text-[14px]' 
                             placeholder='I am a preety fuckin cool dev'
                             rows={3}
                         />
@@ -208,13 +209,13 @@ const EditProfilePage = () => {
                     <div className='flex justify-between gap-4'>
                         <div className='flex flex-col gap-1 w-full'>
                             <label className='text-[13px] font-medium text-white32'>Discord Username</label>
-                            <input className='bg-white7 rounded-[6px] placeholder:text-white32 px-3 py-2 text-[14px]' 
+                            <input className='bg-white7 rounded-[6px] text-white placeholder:text-white32 px-3 py-2 text-[14px]' 
                                 placeholder='Jhon Wick'
                             />
                         </div>
                         <div className='flex flex-col gap-1 w-full'>
                             <label className='text-[13px] font-medium text-white32'>Telegram Username</label>
-                            <input className='bg-white7 rounded-[6px] placeholder:text-white32 px-3 py-2 text-[14px]' 
+                            <input className='bg-white7 rounded-[6px] text-white placeholder:text-white32 px-3 py-2 text-[14px]' 
                                 placeholder='Jhon Wick'
                             />
                         </div>
