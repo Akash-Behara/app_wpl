@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar"
 import ProfilePage from "./pages/ProfilePage"
 import EditProfilePage from "./pages/EditProfilePage"
 import FormPage from "./pages/FormPage"
+import OnBoarding from "./pages/OnBoarding"
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/editprofile" element={<EditProfilePage />} />
           <Route path="/form" element={<FormPage />} />
+          <Route path="/onboarding" element={<OnBoarding />} />
+          
         </Routes>
       </div>
     </div>
