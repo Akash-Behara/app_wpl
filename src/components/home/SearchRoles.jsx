@@ -36,21 +36,18 @@ const SearchRoles = () => {
                 <X className='text-white48 w-6 cursor-pointer' onClick={() => setRoleName('')} size={14}/>
             </div>
             {/* <div className="w-full h-[32px] bg-cardBlueBg2 rounded-md flex flex-row justify-between"> */}
-                <Select className="text-white">
-                    <SelectTrigger className="w-full text-white dark:bg-primaryBlue">
-                        <SelectValue className='text-white' placeholder="Select a fruit" />
-                    </SelectTrigger>
-                    <SelectContent className="">
-                        <SelectGroup className='text-white bg-red-500'>
-                            <SelectLabel className="text-white">Fruits</SelectLabel>
-                            <SelectItem value="apple">Apple</SelectItem>
-                            <SelectItem value="banana">Banana</SelectItem>
-                            <SelectItem value="blueberry">Blueberry</SelectItem>
-                            <SelectItem value="grapes">Grapes</SelectItem>
-                            <SelectItem value="pineapple">Pineapple</SelectItem>
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
+            <div className="w-full h-[32px] bg-cardBlueBg2 rounded-md p-2 flex flex-row justify-between">
+                <input 
+                    className="bg-transparent border-transparent focus:outline-0 rounded-[6px] text-white88 placeholder:text-white48 w-full font-gridular text-[14px] leading-[16.8px]"
+                    type="text" 
+                    name="" 
+                    id=""
+                    value={roleName}
+                    onChange={(e) => setRoleName(e.target.value)}
+                    placeholder='Product Designer'
+                />
+                <X className='text-white48 w-6 cursor-pointer' onClick={() => setRoleName('')} size={14}/>
+            </div>
 
                 {/* <p className="text-white88 font-gridular text-[14px] leading-[16.8px]">Professional</p> */}
                 {/* <ChevronDown className='text-white48' size={14}/> */}

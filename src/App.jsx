@@ -7,6 +7,7 @@ import ProfilePage from "./pages/ProfilePage"
 import EditProfilePage from "./pages/EditProfilePage"
 import FormPage from "./pages/FormPage"
 import OnBoarding from "./pages/OnBoarding"
+import AddProjectPage from "./pages/AddProjectPage"
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
           <Route path="/editprofile" element={<EditProfilePage />} />
           <Route path="/form" element={<FormPage />} />
           <Route path="/onboarding" element={<OnBoarding />} />
-          
+          <Route path="/addproject" element={<AddProjectPage />} />
         </Routes>
       </div>
     </div>

@@ -236,7 +236,7 @@ const EditProfilePage = () => {
                     {dummyProjects?.length ?
                         <div className='mt-3'> 
                             {dummyProjects?.map((project, idx) => (
-                                <div className='relative'>
+                                <div key={idx} className='relative'>
                                     <PoWCard data={project} key={idx} />
                                     <div onClick={handleRemoveProject} className='absolute -top-1 -right-1 bg-white32 rounded-full size-4 flex justify-center items-center cursor-pointer hover:bg-white48'><X size={14} className='text-black/60'/></div>
                                 </div>
