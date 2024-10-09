@@ -25,6 +25,7 @@ export default {
         cardBlueText: "#3EACDB",
         cardBlueBg: "#9CD4EC1A",
         cardBlueBg2: "#171F5E",
+        cardGithubBlueBg: '#091044',
         cardGreenText: "#0ED065",
         cardGreenBg: "#0ED0651A",
         cardRedText: "#F03D3D",

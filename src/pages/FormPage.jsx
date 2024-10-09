@@ -4,17 +4,38 @@ import wpllogo from '../assets/images/wpl_prdetails.png'
 import { useEffect, useState } from 'react';
 
 import checkTick from '../assets/images/check-tick.png'
+import { useNavigate } from 'react-router-dom';
+import GithubTeamSearchBox from '../components/form/GithubTeamSearchBox';
+
+import akashProfile from '../assets/dummy/akash_profile.png'
+import sumeetProfile from '../assets/dummy/sumeet_profile.png'
+import rahulProfile from '../assets/dummy/rahul_profile.png'
 
 const whitespaceRegex = /^\s*$/;
-const usernameRegex = /^[a-zA-Z0-9][a-zA-Z0-9_\-]*[a-zA-Z0-9]$/;
 const emailIdRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const addressRegex = /^(0x)[0-9a-fA-F]{40}$/;
 
-const isValidUsername = (username) => usernameRegex.test(username);
-const isValidEmailId = (emailId) => emailIdRegex.test(emailId);
-const isValidAddress = (address) => addressRegex.test(address);
+const githubTeammatesList = [
+  {
+    img: rahulProfile,
+    username: 'Rahul Bhadoriya',
+    githubId: 'rahuldesignweb3'
+  },
+  {
+    img: akashProfile,
+    username: 'Akash Behera',
+    githubId: 'razerghostt'
+  },
+  {
+    img: sumeetProfile,
+    username: 'Sumeet Shelar',
+    githubId: 'sumeetshelar99'
+  }
+]
 
 const FormPage = () => {
+
+  const navigate = useNavigate();
 
   const submittedDetails = () => {
     return(
@@ -26,7 +47,9 @@ const FormPage = () => {
           <p className='text-[13px] leading-[15.6px] font-medium text-white32'>Explore other bounties/projects that you can help.</p>
         </div>
         <button className='w-full text-white48 font-gridular text-[14px] leading-[20px] bg-cardBlueBg h-[43px]'
-          onClick={() => setIsSubmitDone(false)}
+          onClick={() => {
+            navigate('/')
+          }}
         >
           Explore Projects
         </button>
@@ -34,6 +57,7 @@ const FormPage = () => {
     )
   }
 
+  const [errors, setErrors] = useState({});
   const [isSubmitDone, setIsSubmitDone] = useState(false);
   const [formData, setFormData] = useState({
     username:'',
@@ -41,61 +65,66 @@ const FormPage = () => {
     appExp: '',
     ercAddress: '',
     gitTeammates: []
-  })
-
-  const [errorMsg, setErrorMsg] = useState({
-    username:'',
-    emailId: '',
-    appExp: '',
-    ercAddress: ''
-  })
+  });
 
   const handleChange = (e) => {
     const {name, value} = e.target;
     if(name == 'gitTeammates') return;
-    setFormData((prevdata) => ({...prevdata,[name]: value}))
-    console.log(formData);
+      setFormData((prevdata) => ({...prevdata,[name]: value}))
+      console.log(formData);
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        [name]: '',
+    }));
   }
 
-  const setErrorMsgHelper = (key, value) => {
-    setErrorMsg((prevState) => {
-      return {
-        ...prevState,
-        [key]: value
-      }
-    })    
+  const handleSubmitForm = () => {
+    if(validateForm()) {
+      setIsSubmitDone(true)
+    } else {
+      console.log('Invalid form');
+    }
   }
 
   const validateForm = () => {
-    
-    const { username, emailId, appExp, ercAddress } = formData;
-    setErrorMsg({
-      username: '',
-      emailId: '',
-      appExp: '',
-      ercAddress: ''
+    let newErrors = {};
+    let isValid = true;
+  
+    Object.keys(formData).forEach(key => {
+      if (key === 'gitTeammates') {
+        // skip validation for Github teammates
+        return;
+      }
+      if (key === 'emailId') {
+        if (!formData[key]) {
+          newErrors[key] = 'Email is required';
+          isValid = false;
+        } else if (!emailIdRegex.test(formData[key])) {
+          newErrors[key] = 'Invalid Email';
+          isValid = false;
+        }
+      } else if (key === 'ercAddress') {
+        if (!formData[key]) {
+          newErrors[key] = 'Address is required';
+          isValid = false;
+        } else if (!addressRegex.test(formData[key])) {
+          newErrors[key] = 'Invalid Address';
+          isValid = false;
+        }
+      } else if (key === 'appExp') {
+        if (!formData[key] || whitespaceRegex.test(formData[key])) {
+          newErrors[key] = 'Field is required';
+          isValid = false;
+        }
+      } else if (!formData[key] || whitespaceRegex.test(formData[key])) {
+        newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+        isValid = false;
+      }
     });
-
-
-    if(whitespaceRegex.test(username) || username == '') setErrorMsgHelper('username','Username is required');
-    else if(!isValidUsername(username)) setErrorMsgHelper('username','Invalid Username')
-    
-    if(whitespaceRegex.test(emailId) || emailId == '') setErrorMsgHelper('emailId','Email is required');
-    else if(!isValidEmailId(emailId)) setErrorMsgHelper('emailId','Invalid Email')
-
-    if(whitespaceRegex.test(appExp) || appExp == '') setErrorMsgHelper('appExp','Field is required');
-    
-    if(whitespaceRegex.test(ercAddress) || ercAddress == '') setErrorMsgHelper('ercAddress','ERC-20 address is required');
-    else if(!isValidAddress(ercAddress)) setErrorMsgHelper('ercAddress','Invalid Address')
-
-
-    console.log('fomrdata',formData);
-    if(errorMsg.username == "" && errorMsg.emailId =="" && errorMsg.appExp == "" && errorMsg.ercAddress == "") {
-      setIsSubmitDone(true);
-    } else {
-      alert('Form has errors');
-    }
-  }
+  
+    setErrors(newErrors);
+    return isValid;
+  };
 
   useEffect(() => {
     setIsSubmitDone(false); 
@@ -106,12 +135,7 @@ const FormPage = () => {
       ercAddress: '',
       gitTeammates: []
     })
-    setErrorMsg({
-      username:'',
-      emailId: '',
-      appExp: '',
-      ercAddress: ''
-    })
+    setErrors({})
   }, []);
 
   return (
@@ -135,7 +159,6 @@ const FormPage = () => {
               </div>
             </div>  
 
-
             {
               isSubmitDone ?
               submittedDetails() :
@@ -143,89 +166,103 @@ const FormPage = () => {
                 <div>
                     <div className='flex flex-col gap-4 font-inter'>
                         <div className='mt-8 flex flex-row items-center gap-1 text-primaryYellow'>
-                          <AlignLeft size={14} />
+                          <AlignLeft size={16} />
                           <p className="text-[14px] leading-[20px]">Fill the Information</p>
                         </div>
                         <div className='h-[1px] w-full bg-primaryYellow'/>
                         <div className='flex justify-between gap-4'>
                             <div className='flex flex-col gap-1 w-40 md:w-full'>
-                                <label className='text-[13px] leading-[15.6px] font-medium text-white32'>Your Name</label>
+                                <label 
+                                  htmlFor='username'
+                                  className='text-[13px] leading-[15.6px] font-medium text-white32'
+                                >
+                                  Your Name {errors.username && <span className='text-errorMsgRedText'>*</span>}
+                                </label>
                                 <input 
-                                  className={`bg-white7 rounded-[6px] text-white48 placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errorMsg.username && 'border border-errorMsgRedText'}`} 
+                                  className={`bg-white7 rounded-[6px] text-white48 placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errors.username && 'border border-errorMsgRedText'}`} 
                                   placeholder='Jhon Doe'
                                   name='username'
+                                  id='username'
                                   onChange={handleChange}
                                 />
-                                {errorMsg.username && 
-                                  <div className='text-errorMsgRedText flex gap-1'>
-                                    <Info size={14}  className='' />
-                                    <p className='font-inter font-medium text-[12px] leading-[14.4px]'>{errorMsg.username}</p>
+                                {errors.username && 
+                                  <div className='flex gap-1 items-center'>
+                                    <Info fill='#FF7373' size={16}  className='' />
+                                    <p className='font-inter font-medium text-errorMsgRedText text-[12px] leading-[14.4px]'>{errors.username}</p>
                                   </div>
                                 }
                             </div>
                             <div className='flex flex-col gap-1 w-44 md:w-full'>
-                                <label className='text-[13px] leading-[15.6px] font-medium text-white32'>Your Email</label>
+                                <label 
+                                  htmlFor='emailId' 
+                                  className='text-[13px] leading-[15.6px] font-medium text-white32'
+                                >
+                                  Your Email {errors.emailId && <span className='text-errorMsgRedText'>*</span>}
+                                </label>
                                 <input 
-                                  className={`bg-white7 rounded-[6px] text-white48 placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errorMsg.emailId && 'border border-errorMsgRedText'}`}
+                                  className={`bg-white7 rounded-[6px] text-white48 placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errors.emailId && 'border border-errorMsgRedText'}`}
                                   placeholder='Jhon@Doe.com'
                                   name='emailId'
+                                  id='emailId'
                                   onChange={handleChange}
                                 />
-                                {errorMsg.emailId && 
-                                  <div className='text-errorMsgRedText flex gap-1'>
-                                    <Info size={14}  className='' />
-                                    <p className='font-inter font-medium text-[12px] leading-[14.4px]'>{errorMsg.emailId}</p>
+                                {errors.emailId && 
+                                  <div className='flex gap-1 items-center'>
+                                    <Info fill='#FF7373' size={16}  className='' />
+                                    <p className='font-inter font-medium text-errorMsgRedText text-[12px] leading-[14.4px]'>{errors.emailId}</p>
                                   </div>
                                 }
                             </div>
                         </div>
 
                         <div className='flex flex-col gap-1 w-full'>
-                            <label className='text-[13px] leading-[15.6px] font-medium text-white32'>Do you have experience designing application?</label>
+                            <label 
+                              htmlFor='appExp' 
+                              className='text-[13px] leading-[15.6px] font-medium text-white32'
+                            >
+                              Do you have experience designing application? {errors.username && <span className='text-errorMsgRedText'>*</span>}
+                            </label>
                             <textarea 
-                              className={`bg-white7 rounded-[6px] text-white48 placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errorMsg.appExp && 'border border-errorMsgRedText'}`}
+                              className={`bg-white7 rounded-[6px] text-white48 placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errors.appExp && 'border border-errorMsgRedText'}`}
                               placeholder='I am a preety fuckin cool dev'
                               rows={3}
                               name='appExp'
+                              id='appExp'
                               onChange={handleChange}
                             />
-                            {errorMsg.appExp && 
-                              <div className='text-errorMsgRedText flex gap-1'>
-                                <Info size={14}  className='' />
-                                <p className='font-inter font-medium text-[12px] leading-[14.4px]'>{errorMsg.appExp}</p>
+                            {errors.appExp && 
+                              <div className='flex gap-1 items-center'>
+                                <Info fill='#FF7373' size={16}  className='' />
+                                <p className='font-inter font-medium text-errorMsgRedText text-[12px] leading-[14.4px]'>{errors.appExp}</p>
                               </div>
                             }
                         </div>
 
                         <div className='flex flex-col gap-1 w-full'>
-                            <label className='text-[13px] leading-[15.6px] font-medium text-white32'>Enter your ERC-20 Address</label>
+                            <label 
+                              htmlFor='ercAddress' 
+                              className='text-[13px] leading-[15.6px] font-medium text-white32'
+                            >
+                              Enter your ERC-20 Address {errors.username && <span className='text-errorMsgRedText'>*</span>}
+                            </label>
                             <input 
-                              className={`bg-white7 rounded-[6px] placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errorMsg.ercAddress ? 'border border-errorMsgRedText text-errorMsgRedText' : 'text-white48'}`}
-                              placeholder='Jhon'
+                              className={`bg-white7 rounded-[6px] placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7 ${errors.ercAddress ? 'border border-errorMsgRedText text-errorMsgRedText' : 'text-white48'}`}
+                              placeholder='0xabc1234....'
                               name='ercAddress'
+                              id='ercAddress'
                               onChange={handleChange}
                             />
-                            {errorMsg.ercAddress && 
-                              <div className='text-errorMsgRedText flex gap-1'>
-                                <Info size={14}  className='' />
-                                <p className='font-inter font-medium text-[12px] leading-[14.4px]'>{errorMsg.ercAddress}</p>
+                            {errors.ercAddress && 
+                              <div className='flex gap-1 items-center'>
+                                <Info fill='#FF7373' size={16}  className='' />
+                                <p className='font-inter font-medium text-errorMsgRedText text-[12px] leading-[14.4px]'>{errors.ercAddress}</p>
                               </div>
                             }
                         </div>
-
-                        <div className='flex flex-col gap-1 w-full'>
-                            <label className='text-[13px] leading-[15.6px] font-medium text-white32'>Add your teammates from Github</label>
-                            <input 
-                              className='bg-white7 rounded-[6px] text-white48 placeholder:text-white32 px-3 py-2 text-[14px] focus:outline-0 focus:bg-white7'
-                              placeholder='Jhon'
-                              name='gitTeammates'
-                              onChange={handleChange}
-                            />
-                        </div>
-
+                        <GithubTeamSearchBox teamList={githubTeammatesList} />
                         <button 
                           className='w-full text-white48 text-[14px] leading-[20px] bg-cardBlueBg h-[43px] mb-56' 
-                          onClick={validateForm}
+                          onClick={handleSubmitForm}
                         >
                           Submit
                         </button>
