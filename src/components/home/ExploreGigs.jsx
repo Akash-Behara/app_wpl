@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Tabs from "../ui/Tabs"
 import ExploreGigsCard from "./ExploreGigsCard"
 import { LayoutGrid, ListFilter, TableProperties } from "lucide-react"
+import { BASE_URL } from "../../lib/constants"
 
 
 const initialTabs = [
@@ -14,6 +15,26 @@ const ExploreGigs = () => {
 
   const [tabs, setTabs] = useState(initialTabs)
   const [selectedTab, setSelectedTab] = useState('opengigs')
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    fetchAllProjects()
+  }, [])
+
+  const fetchAllProjects = async () => {
+    const reposne = await fetch(`${BASE_URL}/projects/user`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token_app_wpl')}`
+      }
+    }).then(res => res.json())
+    .then(data => {
+      setProjects(data?.data)
+    })
+  }
+
+  console.log('projects', projects)
 
   const handleTabClick = (id) => {
     const newTabs = tabs.map((tab) => ({
