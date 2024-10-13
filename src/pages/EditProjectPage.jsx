@@ -28,7 +28,19 @@ const EditProjectPage = () => {
     const [description, setDescription] = useState(projectDetails?.description || '');
     const [discordLink, setDiscordLink] = useState(projectDetails?.discordLink || '');
     const [about, setAbout] = useState(projectDetails?.about || '');
-    
+
+    const [milestones, setMilestones] = useState(projectDetails?.milestones || [])
+
+    const setMilestonesHelper = (index,event) => {
+        setMilestones(prevMilestones => {
+            const updatedMilestones = [...prevMilestones];
+            updatedMilestones[index] = {
+                ...updatedMilestones[index],
+                [event.target.name]: event.target.value
+            };
+            return updatedMilestones;
+        });
+    }
 
     // State for validation errors
     const [errors, setErrors] = useState({});
@@ -63,6 +75,8 @@ const EditProjectPage = () => {
 
     console.log('projectDetails', projectDetails);
 
+    
+
     // http://139.59.58.53:3000/projects/update/670697df9143fef611d24903
 
   return (
@@ -89,7 +103,7 @@ const EditProjectPage = () => {
                                     <div className='bg-white7 rounded-md px-3 py-2'>
                                         <input
                                             type='text'
-                                            value={title}
+                                            value={title}   
                                             onChange={(e) => setTitle(e.target.value)}
                                             className='bg-transparent text-white88 placeholder:text-white64 outline-none border-none w-full'
                                         />
@@ -193,7 +207,7 @@ const EditProjectPage = () => {
                 <div className='border border-dashed border-white12 my-4'/>
 
                 <div>
-                    {projectDetails?.milestones?.map((milestone, index) => (
+                    {milestones?.map((milestone, index) => (
                            <Accordion type="single" defaultValue="item-3" collapsible>
                            <AccordionItem value={`item-${3}`} key={3} className="border-none">
                                <AccordionTrigger className="text-white48 font-inter hover:no-underline border-b border-primaryYellow">
@@ -209,7 +223,9 @@ const EditProjectPage = () => {
                                             <div className='bg-white7 rounded-md px-3 py-2'>
                                                 <input
                                                     type='text'
-                                                    
+                                                    value={milestone.title}
+                                                    name='title'
+                                                    onChange={(e) => setMilestonesHelper(index,e)} 
                                                     className='bg-transparent text-white88 placeholder:text-white64 outline-none border-none w-full'
                                                 />
                                             </div>
@@ -217,7 +233,11 @@ const EditProjectPage = () => {
                                         </div>
                                        <p className='text-[13px] font-semibold text-white32 font-inter mb-[6px]'>Add Milestone goals</p>
                                        <div className='bg-white7 rounded-md px-3 py-2'>
-                                           <textarea type='text' className='bg-transparent text-white88 placeholder:text-white64 outline-none border-none w-full' rows={4}/>
+                                           <textarea type='text' 
+                                                value={milestone.description} 
+                                                name='description'
+                                                onChange={(e) => setMilestonesHelper(index,e)} 
+                                                className='bg-transparent text-white88 placeholder:text-white64 outline-none border-none w-full' rows={4}/>
                                        </div>
                                        <div className='mt-3'>
                                             <p className='text-[13px] font-semibold text-white32 font-inter mb-[6px]'>Milestone budget</p>
@@ -228,7 +248,13 @@ const EditProjectPage = () => {
                                                 </div>
                                                 <div className='w-full'>
                                                     <div className='bg-white7 rounded-md px-3 py-2'>
-                                                        <input type='text' placeholder='1200' className='bg-transparent text-white88 placeholder:text-white32 outline-none border-none w-full'/>
+                                                        <input 
+                                                            type='number' 
+                                                            value={milestone.prize} 
+                                                            name='prize'
+                                                            onChange={(e) => setMilestonesHelper(index,e)} 
+                                                            placeholder='1200' 
+                                                            className='bg-transparent text-white88 placeholder:text-white32 outline-none border-none w-full'/>
                                                     </div>
                                                 </div>
                                             </div>
