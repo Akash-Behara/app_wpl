@@ -6,6 +6,9 @@ import Navbar from "./components/Navbar"
 import ProfilePage from "./pages/ProfilePage"
 import EditProfilePage from "./pages/EditProfilePage"
 import FormPage from "./pages/FormPage"
+import OnBoarding from "./pages/OnBoarding"
+import AddProjectPage from "./pages/AddProjectPage"
+import EditProjectPage from "./pages/EditProjectPage"
 
 function App() {
 
@@ -17,11 +20,14 @@ function App() {
       <div className="mt-[64px]">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/projectdetails" element={<ProjectDetailsPage />} />
+          <Route path="/projectdetails/:id" element={<ProjectDetailsPage />} />
           <Route path="/rewards" element={<RewardsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/editprofile" element={<EditProfilePage />} />
           <Route path="/form" element={<FormPage />} />
+          <Route path="/onboarding" element={<OnBoarding />} />
+          <Route path="/addproject" element={<AddProjectPage />} />
+          <Route path="/editproject/:id" element={<EditProjectPage />} />
         </Routes>
       </div>
     </div>

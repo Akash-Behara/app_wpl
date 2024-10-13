@@ -11,7 +11,7 @@ const MilestoneStatusCard = ({ data }) => {
             </div>
             <div className='flex items-center gap-1 font-inter'>
                 <Hourglass size={14} className='text-white32'/>
-                <p className='text-white48 text-[12px] leading-[14px]'>{data?.milestone_status}</p>
+                <p className='text-white48 text-[12px] leading-[14px]'>{data?.status}</p>
             </div>
         </div>
         
@@ -21,7 +21,7 @@ const MilestoneStatusCard = ({ data }) => {
                 <p className='text-[12px] text-white32 leading-[16px]'>Starts in</p>
             </div>
             <div className='flex items-center gap-1'>
-                <p className='text-white88 text-[12px] font-medium font-inter'>{data?.starts_in}</p>
+                <p className='text-white88 text-[12px] font-medium font-inter'>DUMMY START IN</p>
             </div>
         </div>
 
@@ -31,7 +31,9 @@ const MilestoneStatusCard = ({ data }) => {
                 <p className='text-[12px] text-white32 leading-[16px]'>Need Help?</p>
             </div>
             <div className='flex items-center gap-1'>
-                <p className='text-[12px] text-white88 leading-[14px] font-medium font-inter flex items-center gap-1'>Join discord <ArrowUpRight size={14} className='text-white32'/></p>
+                <a href={data?.help_link[0]} target='_blank' className='cursor-pointer'>
+                    <p className='text-[12px] text-white88 leading-[14px] font-medium font-inter flex items-center gap-1'>Join discord <ArrowUpRight size={14} className='text-white32'/></p>
+                </a>
             </div>
         </div>
     </div>

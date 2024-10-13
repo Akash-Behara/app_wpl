@@ -19,7 +19,9 @@ const Navbar = () => {
           <p>GRANTS</p>
         </div>
         <div className='-translate-x-10'>
-          <img src={wpllogo} alt='wpllogo' className='w-[22px] h-[25px]'/>
+          <div className='z-[100]'>
+            <Link to={'/'}><img src={wpllogo} alt='wolf logo' className='w-[22px] h-[25px]'/></Link>
+          </div>
         </div>
         <div className='flex items-center gap-2'>
           <img src={hourglass} alt='hourglass' className='w-[16px] h-[24px]'/>
