@@ -6,7 +6,7 @@ const handleForbiddenError = async (error) => {
         return
     }
     if (error?.request?.status === 401) {
-        window.location.href = '/onboarding/funds'
+        window.location.href = '/onboarding'
         return
     }
     if (error?.request?.status === 402) {
@@ -18,6 +18,15 @@ const handleForbiddenError = async (error) => {
 export const getProjectDetails = async (id) => {
     try {
         const response = await axiosInstance.get(`/projects/${id}`)
+        return response.data.data
+    } catch (error) {
+        handleForbiddenError(error)
+    }
+}
+
+export const updateProjectDetails = async (id, updData) => {
+    try {
+        const response = await axiosInstance.put(`/projects/update/${id}`, updData)
         return response.data.data
     } catch (error) {
         handleForbiddenError(error)
